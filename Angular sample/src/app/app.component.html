@@ -1,0 +1,20 @@
+<ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [title]='title' [subTitle]='subtitle'>
+    <e-annotations>
+      <ng-container *ngFor="let data of chartData; let idx = index;">
+        <e-annotation x='{{data.x}}' y='{{data.yLabelText}}' coordinateUnits='Point' horizontalAlignment='Center'>
+          <ng-template #content>
+            <div style="margin-bottom: 16px; margin-left: 10px;font-size: 12px;">
+              <div>
+                {{data.labelText}}
+              </div>
+            </div>
+          </ng-template>
+        </e-annotation>
+      </ng-container>        
+    </e-annotations>
+    <e-series-collection>
+        <e-series [dataSource]='chartData' type='StackingBar' xName='x' yName='baseline' fill='#FFFFFF'></e-series>
+        <e-series [dataSource]='chartData' type='StackingBar' xName='x' yName='y1' fill='#fa4a00'></e-series>
+        <e-series [dataSource]='chartData' type='StackingBar' xName='x' yName='y2' fill='#000095'></e-series>
+    </e-series-collection>
+  </ejs-chart>
